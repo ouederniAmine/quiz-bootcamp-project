@@ -21,14 +21,25 @@ let fillQuestion = (question, questionNum, answers) => {
   }
 };
 
-const newQuestion = () => {
-  let question = questions[Math.floor(Math.random() * 10)];
-  fillQuestion(question.question, currentQuestion, question.answers);
-  document.getElementById("next").addEventListener("click", () => {
+
+
+document.addEventListener("click" , (e)=>{
+  if(e.target.innerHTML === "Next"){
     console.log("clicked");
     const event = new CustomEvent("newQuestion");
     window.dispatchEvent(event);
-  });
+   
+  }
+})
+const newQuestion = () => {
+  let question = questions[Math.floor(Math.random() * 10)];
+  fillQuestion(question.question, currentQuestion, question.answers);
+  isQuestion = true;
+  console.log(isQuestion)
+  document.getElementById("answer1").onclick = ()=>{}
+  document.getElementById("answer2").onclick = ()=>{}
+  document.getElementById("answer3").onclick = ()=>{}
+  document.getElementById("answer4").onclick = ()=>{}
 };
 let quizPage =
   "<div id='quizPage'><div class='score'><h1>20</h1></div><div class='quizSelection'><div class='question'><h1 id='questionNum'>Question N° 1 :</h1><h2 id='question'>hellllo</h2></div><div class='answers'><button id='answer1'>hey</button><button id='answer2'>hey</button><button id='answer3'>hey</button><button id='answer4'>hey</button></div><button id='next'>Next</button></div></div>";
@@ -45,7 +56,7 @@ let questions = [
     response: "true",
   },
   {
-    question: "What",
+    question: "What is the name of Dua Lipa’s 2020 album release?at",
     answers: ["true", "fasle", "nfof", "rn"],
     response: "true",
   },
